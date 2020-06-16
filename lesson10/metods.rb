@@ -21,16 +21,36 @@ def get_user_input
 end
 
 
-def check_result(user_input, letters, good_letters,bad_letters)
+def check_input(user_input, letters, good_letters,bad_letters)
 	if (good_letters.include?(user_input) || bad_letters.include?(user_input))
 		return 0
 	end
 
-	if (letters.include?(user_input))
+	if letters.include?(user_input) ||
+	 (user_input == 'е' && letters.include?('ё')) ||
+     (user_input == 'ё' && letters.include?('е')) ||
+     (user_input == 'и' && letters.include?('й')) ||
+     (user_input == 'й' && letters.include?('и'))
 		good_letters << user_input
 
+	if user_input == 'е'
+      good_letters << 'ё'
+    end
+
+    if user_input == 'ё'
+      good_letters << 'е'
+    end
+
+    if user_input == 'и'
+      good_letters << 'й'
+    end
+
+    if user_input == 'й'
+      good_letters << 'и'
+    end
+
 # условие когда отгада но все слово
-		if letters.uniq.size == good_letters.size
+		if (letters - good_letters).empty?
 			return 1
 		else
 			return 0
@@ -62,7 +82,7 @@ puts "Ошибки (#{errors}): (#{bad_letters.join(", ")}):"
 
 if errors >= 7
 	puts "Вы проиграли"
-elsif letters.uniq.size == good_letters.size
+elsif (letters - good_letters).empty?
 	puts "Вы выиграли!"
 else
 	puts "У вас осталось попыток: " + (7 - errors).to_s
