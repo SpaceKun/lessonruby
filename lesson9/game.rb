@@ -2,7 +2,7 @@
 
 
 # first
-def Guess_the_number(a)
+def Guess_the_number(choise)
 if a == number
 	puts 'Вы угадали, поздравляю Вас ' + nam
 	exit
@@ -29,12 +29,9 @@ number = rand(1..15)
 puts "У тебя есть 3 попытки что бы угадать число"
 
 
-a = gets.chomp.to_i
+
 Guess_the_number(a)
-a = gets.chomp.to_i
-Guess_the_number(a)
-a = gets.chomp.to_i
-Guess_the_number(a)
+
 
 # # second
 # a = gets.chomp.to_i
