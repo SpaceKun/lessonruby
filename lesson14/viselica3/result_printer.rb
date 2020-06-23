@@ -38,6 +38,7 @@ print_viselitsa(game.errors)
 
 if game.errors >= 7
 	puts "Вы проиграли"
+	puts "Загаданное слово было:" + game.letters.join('')
 elsif (game.letters - game.good_letters).empty?
 	puts "Вы выиграли!"
 else

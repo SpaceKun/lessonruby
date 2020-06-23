@@ -5,7 +5,8 @@ class WordReader
 			f = File.new(file_name,"r")
 			lines = f.readlines
 			f.close
-			return lines.sample.chomp
+			@word = lines.sample.chomp
+			return @word
 		else
 			return nil
 		end
